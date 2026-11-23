@@ -65,6 +65,14 @@ public class ManageAttendance extends javax.swing.JPanel {
         qrBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         qrBtn.setIconTextGap(10);
         qrBtn.setPreferredSize(new java.awt.Dimension(250, 40));
+        qrBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                qrBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                qrBtnMouseExited(evt);
+            }
+        });
         qrBtn.addActionListener(this::qrBtnActionPerformed);
 
         attendanceBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -89,6 +97,14 @@ public class ManageAttendance extends javax.swing.JPanel {
         eventsBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         eventsBtn.setIconTextGap(10);
         eventsBtn.setPreferredSize(new java.awt.Dimension(250, 40));
+        eventsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                eventsBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                eventsBtnMouseExited(evt);
+            }
+        });
         eventsBtn.addActionListener(this::eventsBtnActionPerformed);
 
         studentsBtn.setBackground(new java.awt.Color(216, 223, 218));
@@ -103,6 +119,14 @@ public class ManageAttendance extends javax.swing.JPanel {
         studentsBtn.setMaximumSize(new java.awt.Dimension(130, 24));
         studentsBtn.setMinimumSize(new java.awt.Dimension(130, 24));
         studentsBtn.setPreferredSize(new java.awt.Dimension(250, 40));
+        studentsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                studentsBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                studentsBtnMouseExited(evt);
+            }
+        });
         studentsBtn.addActionListener(this::studentsBtnActionPerformed);
 
         jLabel2.setBackground(new java.awt.Color(211, 211, 211));
@@ -158,7 +182,11 @@ public class ManageAttendance extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
-        main.showPage("login");
+        int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to log out?", "Log Out?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            main.showPage("login");
+        }
     }//GEN-LAST:event_logOutBtnActionPerformed
 
     private void qrBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qrBtnActionPerformed
@@ -185,6 +213,30 @@ public class ManageAttendance extends javax.swing.JPanel {
     private void logOutBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logOutBtnMouseExited
         logOutBtn.setBackground(new java.awt.Color(254, 226, 226));
     }//GEN-LAST:event_logOutBtnMouseExited
+
+    private void studentsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsBtnMouseEntered
+        studentsBtn.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_studentsBtnMouseEntered
+
+    private void studentsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsBtnMouseExited
+        studentsBtn.setBackground(new java.awt.Color(216, 223, 218));
+    }//GEN-LAST:event_studentsBtnMouseExited
+
+    private void eventsBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventsBtnMouseEntered
+        eventsBtn.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_eventsBtnMouseEntered
+
+    private void eventsBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventsBtnMouseExited
+        eventsBtn.setBackground(new java.awt.Color(216, 223, 218));
+    }//GEN-LAST:event_eventsBtnMouseExited
+
+    private void qrBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qrBtnMouseEntered
+        qrBtn.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_qrBtnMouseEntered
+
+    private void qrBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_qrBtnMouseExited
+        qrBtn.setBackground(new java.awt.Color(216, 223, 218));
+    }//GEN-LAST:event_qrBtnMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

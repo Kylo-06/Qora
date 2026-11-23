@@ -118,7 +118,7 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_loginBtnMouseEntered
 
     private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
