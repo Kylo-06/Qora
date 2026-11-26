@@ -15,10 +15,18 @@ import com.google.zxing.common.HybridBinarizer;
 public class QRScanner extends javax.swing.JPanel {
 
     private Main main;
+    private final javax.swing.JPopupMenu historyMenu = new javax.swing.JPopupMenu();
 
     public QRScanner(Main main) {
         this.main = main;
         initComponents();
+
+        attendanceModeGroupBtn = new ButtonGroup();
+
+        attendanceModeGroupBtn.add(tgglSignIn);
+        attendanceModeGroupBtn.add(tgglSignOut);
+        tgglSignIn.setSelected(true);
+
     }
 
     /**
@@ -30,6 +38,10 @@ public class QRScanner extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        list1 = new java.awt.List();
+        popupMenu1 = new java.awt.PopupMenu();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        attendanceModeGroupBtn = new javax.swing.ButtonGroup();
         sidebar = new javax.swing.JPanel();
         logOutBtn = new javax.swing.JButton();
         qrBtn = new javax.swing.JButton();
@@ -37,6 +49,19 @@ public class QRScanner extends javax.swing.JPanel {
         eventsBtn = new javax.swing.JButton();
         studentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        openScannerBtn = new javax.swing.JButton();
+        modeContainer = new javax.swing.JPanel();
+        tgglSignIn = new javax.swing.JToggleButton();
+        tgglSignOut = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
+        qrEventSearch = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
+        popupMenu1.setLabel("popupMenu1");
+
+        jToggleButton1.setText("jToggleButton1");
 
         setBackground(new java.awt.Color(244, 245, 242));
         setPreferredSize(new java.awt.Dimension(1100, 700));
@@ -181,17 +206,129 @@ public class QRScanner extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(700, 80));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Start a Scanning Session");
+
+        openScannerBtn.setBackground(new java.awt.Color(52, 199, 89));
+        openScannerBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        openScannerBtn.setForeground(new java.awt.Color(255, 255, 255));
+        openScannerBtn.setText("Open Scanner");
+        openScannerBtn.setToolTipText("");
+        openScannerBtn.setBorderPainted(false);
+        openScannerBtn.addActionListener(this::openScannerBtnActionPerformed);
+
+        modeContainer.setBackground(new java.awt.Color(255, 255, 255));
+        modeContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
+        tgglSignIn.setBackground(new java.awt.Color(216, 223, 218));
+        tgglSignIn.setForeground(new java.awt.Color(0, 0, 0));
+        tgglSignIn.setText("Sign In");
+        tgglSignIn.setBorderPainted(false);
+        tgglSignIn.setFocusPainted(false);
+        tgglSignIn.addActionListener(this::tgglSignInActionPerformed);
+
+        tgglSignOut.setBackground(new java.awt.Color(216, 223, 218));
+        tgglSignOut.setForeground(new java.awt.Color(0, 0, 0));
+        tgglSignOut.setText("Sign Out");
+        tgglSignOut.setBorderPainted(false);
+        tgglSignOut.setFocusPainted(false);
+        tgglSignOut.addActionListener(this::tgglSignOutActionPerformed);
+
+        javax.swing.GroupLayout modeContainerLayout = new javax.swing.GroupLayout(modeContainer);
+        modeContainer.setLayout(modeContainerLayout);
+        modeContainerLayout.setHorizontalGroup(
+            modeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modeContainerLayout.createSequentialGroup()
+                .addComponent(tgglSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tgglSignOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        modeContainerLayout.setVerticalGroup(
+            modeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modeContainerLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(modeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tgglSignIn)
+                    .addComponent(tgglSignOut)))
+        );
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Attendance Mode");
+
+        qrEventSearch.setText("Search Event");
+        qrEventSearch.addActionListener(this::qrEventSearchActionPerformed);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(qrEventSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(modeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126)
+                        .addComponent(openScannerBtn)))
+                .addGap(24, 24, 24))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(modeContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qrEventSearch))
+                .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(openScannerBtn)
+                .addGap(23, 23, 23))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("QR Attendance Scanner");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 800, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -251,14 +388,61 @@ public class QRScanner extends javax.swing.JPanel {
         attendanceBtn.setBackground(new java.awt.Color(216, 223, 218));
     }//GEN-LAST:event_attendanceBtnMouseExited
 
+    private void openScannerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openScannerBtnActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Opening Scanner...");
+    }//GEN-LAST:event_openScannerBtnActionPerformed
+
+    private void tgglSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgglSignInActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Sign In Selected");
+    }//GEN-LAST:event_tgglSignInActionPerformed
+
+    private void tgglSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgglSignOutActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Sign Out Selected");
+    }//GEN-LAST:event_tgglSignOutActionPerformed
+
+    private void qrEventSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qrEventSearchActionPerformed
+        // TODO add your handling code here:
+        String query = qrEventSearch.getText().trim();
+
+        if (query.isEmpty()) {
+            return;
+        }
+        javax.swing.JMenuItem item = new javax.swing.JMenuItem(query);
+        item.addActionListener(e -> {
+            qrEventSearch.setText(query);
+            qrEventSearchActionPerformed(null);
+        });
+        historyMenu.insert(item, 0);
+
+        // Your search logic here:
+        System.out.println("Searching for: " + query);
+    }//GEN-LAST:event_qrEventSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton attendanceBtn;
+    private javax.swing.ButtonGroup attendanceModeGroupBtn;
     private javax.swing.JButton eventsBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private java.awt.List list1;
     private javax.swing.JButton logOutBtn;
+    private javax.swing.JPanel modeContainer;
+    private javax.swing.JButton openScannerBtn;
+    private java.awt.PopupMenu popupMenu1;
     private javax.swing.JButton qrBtn;
+    private javax.swing.JTextField qrEventSearch;
     private javax.swing.JPanel sidebar;
     private javax.swing.JButton studentsBtn;
+    private javax.swing.JToggleButton tgglSignIn;
+    private javax.swing.JToggleButton tgglSignOut;
     // End of variables declaration//GEN-END:variables
+
 }

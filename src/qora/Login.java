@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JPanel {
 
-    private Main main;
+    private Main m;
 
-    public Login(Main main) {
-        this.main = main;
+    public Login(Main m) {
+        this.m = m;
         initComponents();
     }
 
@@ -114,7 +114,8 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        main.showPage("student");
+        m.showPage("student");
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
